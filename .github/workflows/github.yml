@@ -1,1 +1,8 @@
-lll
+name: My github action
+on: [push]
+jobs:
+  my-firstjob:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello World !!!"
+      - run: echo "Hello!!! @@@@"
