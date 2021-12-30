@@ -1,8 +1,13 @@
 name: My github action
 on: [push]
 jobs:
-  my-firstjob:
+ my-firstjob:
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello World !!!"
       - run: echo "Hello!!! @@@@"
+ my-secondjob:
+   runs-on: ubuntu-latest
+   steps:
+     - run: echo "hello World !!!"
+     - run: echo "Hello!!! @@@@"
