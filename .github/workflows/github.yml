@@ -31,6 +31,6 @@ jobs:
        - name: test
          env: 
            var1: ${{ needs.buildjob.outputs.var1 }}
-         run: echo "hello test dependent job by $var1"
+         run: echo "hello test dependent job by " $var1
      
      
