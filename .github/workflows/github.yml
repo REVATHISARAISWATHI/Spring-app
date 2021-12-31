@@ -4,7 +4,7 @@ jobs:
  buildjob:
    runs-on: ubuntu-latest
    outputs:
-     var1: ${{ step.var.output.var1_username }}
+     var1: ${{ step.var.outputs.var1_username }}
    steps:
      - uses: actions/checkout@v2
      #- run: ls -la
@@ -30,7 +30,7 @@ jobs:
      steps:
        - name: test
          env: 
-           var1: ${{ needs.buildjob.var1 }}
+           var1: ${{ needs.buildjob.outputs.var1 }}
          run: echo "hello test dependent job by $var1"
      
      
