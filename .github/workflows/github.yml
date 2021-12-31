@@ -11,7 +11,6 @@ jobs:
         distribution: 'temurin'
         java-version: '11'
         cache: 'maven'
-     - run: apt-get install maven
      - run: mvn -version
      - run: mvn clean install 
     
