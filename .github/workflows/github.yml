@@ -4,7 +4,7 @@ jobs:
  buildjob:
    runs-on: ubuntu-latest
    outputs:
-     text: ${{ steps.var.outputs.text }}
+     text: ${{ steps.sample.outputs.text }}
    steps:
      - uses: actions/checkout@v2
      #- run: ls -la
@@ -28,8 +28,8 @@ jobs:
      needs: buildjob
      runs-on: ubuntu-latest
      env: 
-         VAR: ${{ needs.buildjob.outputs.text }}
+      Name: ${{ needs.buildjob.outputs.text }}
      steps:
-       - run: echo "hello test dependent job by " $VAR
+       - run: echo "hello test dependent job by " $Name
      
      
