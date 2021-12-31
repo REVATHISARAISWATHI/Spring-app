@@ -17,8 +17,8 @@ jobs:
      #- name: build
        #run: mvn clean install 
      - name: vars
-       id: var
-       run: echo "::set-outputname=text::revathi"
+       id: sample
+       run: echo "::set-outputname=text::revathi-Hello-world"
      #- name: nexus upload
        #env:
          #pwd: ${{ secrets.PWD }}
@@ -27,10 +27,9 @@ jobs:
  test-job:
      needs: buildjob
      runs-on: ubuntu-latest
+     env: 
+         VAR: ${{ needs.buildjob.outputs.text }}
      steps:
-       - name: test
-         env: 
-           VAR: ${{ needs.buildjob.outputs.text }}
-         run: echo "hello test dependent job by " $VAR
+       - run: echo "hello test dependent job by " $VAR
      
      
