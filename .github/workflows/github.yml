@@ -15,7 +15,7 @@ jobs:
         cache: 'maven'
      #- run: mvn -version
      - name: build
-       run: mvn clean install 
+       #run: mvn clean install 
      - name: vars
        id: var
        run: echo "::set-outputname=text::revathi"
@@ -30,7 +30,7 @@ jobs:
      steps:
        - name: test
          env: 
-           VAR: ${{ needs.buildjob.outputs.text}}
+           VAR: ${{ needs.buildjob.outputs.text }}
          run: echo "hello test dependent job by " $VAR
      
      
