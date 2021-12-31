@@ -12,6 +12,10 @@ jobs:
         java-version: '11'
         cache: 'maven'
      #- run: mvn -version
-     - run: mvn clean install 
-     - run: curl -v -u admin:pwd --upload-file /home/runner/work/Spring-app/Spring-app/target/Spring-app-0.0.1-SNAPSHOT.war http://34.125.147.30:8081/repository/maven-snapshots/com.wipro/spring-app/0.0.1-SNAPSHOT/spring-app-0.0.1-SNAPSHOT.war
+     - name: build
+       run: mvn clean install 
+     - name: nexus upload
+       env:
+         PWD: ${{ secrets.PWD }}
+       run: curl -v -u admin:$pwd --upload-file /home/runner/work/Spring-app/Spring-app/target/Spring-app-0.0.1-SNAPSHOT.war http://34.125.147.30:8081/repository/maven-snapshots/com.wipro/spring-app/0.0.1-SNAPSHOT/spring-app-0.0.1-SNAPSHOT.war
     
