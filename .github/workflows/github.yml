@@ -16,14 +16,14 @@ jobs:
      #- run: mvn -version
      #- name: build
        #run: mvn clean install 
-     - name: vars
-       id: sample
-       run: echo "::set-outputname=text::revathi-Hello-world"
      #- name: nexus upload
        #env:
          #pwd: ${{ secrets.PWD }}
          #username: ${{ secrets.USER_NAME}}
        #run: curl -v -u $username:$pwd --upload-file /home/runner/work/Spring-app/Spring-app/target/Spring-app-0.0.1-SNAPSHOT.war http://34.125.147.30:8081/repository/maven-snapshots/com.wipro/spring-app/0.0.1-SNAPSHOT/spring-app-0.0.1-SNAPSHOT.war
+     - name: vars
+       id: sample
+       run: echo "::set-outputname=text::revathi-Hello-world"
  test-job:
      needs: buildjob
      runs-on: ubuntu-latest
