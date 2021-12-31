@@ -1,8 +1,10 @@
 name: My github action
 on: [push]
 jobs:
- build-job:
+ buildjob:
    runs-on: ubuntu-latest
+   outputs:
+     var1: ${{ step.var.output.var1_username }}
    steps:
      - uses: actions/checkout@v2
      #- run: ls -la
@@ -14,15 +16,21 @@ jobs:
      #- run: mvn -version
      - name: build
        run: mvn clean install 
+     - name: vars
+       id: var
+       run: echo "::set-outputname=var1_username::revathi"
      #- name: nexus upload
        #env:
          #pwd: ${{ secrets.PWD }}
          #username: ${{ secrets.USER_NAME}}
        #run: curl -v -u $username:$pwd --upload-file /home/runner/work/Spring-app/Spring-app/target/Spring-app-0.0.1-SNAPSHOT.war http://34.125.147.30:8081/repository/maven-snapshots/com.wipro/spring-app/0.0.1-SNAPSHOT/spring-app-0.0.1-SNAPSHOT.war
  test-job:
-     needs: build-job
+     needs: buildjob
      runs-on: ubuntu-latest
      steps:
-       - run: echo "hello test dependent job"
+       - name: test
+         env: 
+           var1: ${{ needs.buildjob.var1 }}
+         run: echo "hello test dependent job by $var1"
      
      
