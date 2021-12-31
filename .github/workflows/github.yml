@@ -4,7 +4,7 @@ jobs:
  buildjob:
    runs-on: ubuntu-latest
    outputs:
-     var1_username: ${{ steps.var.outputs.var1_username }}
+     text: ${{ steps.var.outputs.text }}
    steps:
      - uses: actions/checkout@v2
      #- run: ls -la
@@ -18,7 +18,7 @@ jobs:
        run: mvn clean install 
      - name: vars
        id: var
-       run: echo "::set-outputname=var1_username::revathi"
+       run: echo "::set-outputname=text::revathi"
      #- name: nexus upload
        #env:
          #pwd: ${{ secrets.PWD }}
@@ -30,7 +30,7 @@ jobs:
      steps:
        - name: test
          env: 
-           VAR: ${{ needs.buildjob.outputs.var1_username }}
+           VAR: ${{ needs.buildjob.outputs.text}}
          run: echo "hello test dependent job by " $VAR
      
      
