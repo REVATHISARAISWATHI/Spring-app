@@ -1,14 +1,13 @@
 name: My github action
 on: [push]
 jobs:
- my-firstjob:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "hello World !!!"
-      - run: echo "Hello!!! @@@@"
  build-job:
    runs-on: ubuntu-latest
    steps:
      - uses: actions/checkout@v2
-     - run: tree
+     - run: ls -la
+     - uses: actions/setup-java@v2
+     - run: apt-get install maven
+     - run: mvn -version
+     - run: mvn clean install 
     
